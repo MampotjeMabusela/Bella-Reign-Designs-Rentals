@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Reign Designs | Custom Designs ● Rentals</title>
+  <link rel="icon" type="image/png" href="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-0028b6df-a55a-430d-bd7d-de7f73613685.png">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: elegant serif + clean sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfaf7;
+      color: #1e1e1e;
+      line-height: 1.5;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    /* background logo watermark – original crown + text design */
+    .bg-logo {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-logo-inner {
+      opacity: 0.07;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 85vmin;
+      max-width: 720px;
+    }
+
+    .bg-logo .bg-crown {
+      flex-shrink: 0;
+      margin-bottom: 2vmin;
+    }
+
+    .bg-logo .bg-crown svg {
+      width: 20vmin;
+      height: 14vmin;
+      stroke: #1e1e1e;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .bg-logo .bg-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 8vmin, 5rem);
+      letter-spacing: 2px;
+      color: #1e1e1e;
+      line-height: 1.05;
+    }
+
+    .bg-logo .bg-text .bg-line1 { margin-bottom: -0.05em; }
+    .bg-logo .bg-text .bg-line2 { margin-bottom: -0.05em; }
+    .bg-logo .bg-text .bg-line3 { font-size: 0.85em; font-weight: 700; letter-spacing: 3px; }
+
+    .bg-logo .bg-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.7rem, 2.2vmin, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #1e1e1e;
+      text-transform: uppercase;
+      margin-top: 1vmin;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3, .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* navigation */
+    .navbar {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: inline-block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+      transform: scale(1.04);
+      opacity: 0.92;
+    }
+
+    .logo-image {
+      height: 130px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.06));
+      transition: filter 0.3s ease;
+    }
+
+    .logo-link:hover .logo-image {
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.1));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #b89b6e;
+    }
+
+    /* hero – full-viewport with priority image */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 400;
+      color: #e8d4b8;
+      letter-spacing: 8px;
+      margin-top: 16px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+
+    .hero .sub-hero {
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      max-width: 620px;
+      margin: 28px auto 36px;
+      color: rgba(255,255,255,0.95);
+      font-weight: 300;
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 28px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.2);
+    }
+
+    .hero .btn {
+      border-color: rgba(255,255,255,0.9);
+      color: #fff;
+    }
+
+    .hero .btn:hover {
+      background-color: #fff;
+      color: #1e1e1e;
+      border-color: #fff;
+    }
+
+    /* featured – priority homepage gallery */
+    .featured {
+      padding: 0;
+      background: #0d0d0d;
+    }
+
+    .featured-header {
+      text-align: center;
+      padding: 72px 24px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .featured-header .featured-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .featured-header .featured-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 3px;
+      line-height: 1.6;
+    }
+
+    .featured-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #b89b6e, #d4c4a0);
+      margin: 0 auto 48px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .featured-item {
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+      aspect-ratio: 4 / 5;
+    }
+
+    .featured-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .featured-item:hover img {
+      transform: scale(1.06);
+    }
+
+    @media (max-width: 600px) {
+      .hero { min-height: 85vh; padding: 80px 20px 60px; }
+      .featured-grid { grid-template-columns: 1fr; padding: 0 16px 60px; }
+      .featured-item { aspect-ratio: 3 / 4; }
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #1e1e1e;
+      color: white;
+      padding: 14px 42px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border: 2px solid #1e1e1e;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: #1e1e1e;
+    }
+
+    /* services section */
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1e1e1e;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #6a6a6a;
+      max-width: 600px;
+      margin: 0 auto 60px;
+      font-size: 1.1rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin: 60px 0;
+    }
+
+    .card {
+      background-color: white;
+      padding: 40px 30px;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.05);
+      border: 1px solid #f0ebe6;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card i {
+      font-size: 2.8rem;
+      color: #b89b6e;
+      margin-bottom: 25px;
+    }
+
+    .card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .card p {
+      color: #5a5a5a;
+      font-weight: 300;
+    }
+
+    /* about */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+      margin: 80px 0;
+    }
+
+    .about-text {
+      flex: 1 1 300px;
+    }
+
+    .about-text h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .about-highlight {
+      background-color: #f5f0ea;
+      padding: 30px;
+      border-left: 6px solid #b89b6e;
+    }
+
+    .about-highlight p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    .about-image {
+      flex: 1 1 300px;
+      height: 340px;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.4);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.03);
+      transition: transform 0.6s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.07);
+    }
+
+    /* our work gallery */
+    .work-gallery {
+      padding: 80px 0;
+      background: linear-gradient(180deg, #fcfaf7 0%, #f8f5f0 50%, #fcfaf7 100%);
+    }
+
+    .work-gallery .section-title {
+      margin-bottom: 12px;
+    }
+
+    .work-gallery .section-sub {
+      margin-bottom: 50px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      aspect-ratio: 3 / 4;
+      background: #f0ebe6;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 900px) {
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* founder spotlight */
+    .founder {
+      background: #050505;
+      color: #ffffff;
+      padding: 72px 0;
+    }
+
+    .founder-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .founder-image {
+      flex: 1 1 320px;
+      max-width: 420px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 22px 60px -18px rgba(0, 0, 0, 0.85);
+    }
+
+    .founder-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      transform: scale(1.03);
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .founder:hover .founder-image img {
+      transform: scale(1.08);
+      filter: grayscale(85%);
+    }
+
+    .founder-text {
+      flex: 1 1 320px;
+      max-width: 520px;
+    }
+
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .founder-role {
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 22px;
+    }
+
+    .founder-copy {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 2px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .founder {
+        padding: 64px 0;
+      }
+      .founder-inner {
+        gap: 32px;
+      }
+      .founder-image,
+      .founder-text {
+        max-width: none;
+      }
+    }
+
+    /* contact */
+    .contact-section {
+      background-color: #1e1e1e;
+      color: white;
+      padding: 80px 0;
+      margin-top: 40px;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-info h3 {
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .contact-info i {
+      color: #b89b6e;
+      width: 30px;
+    }
+
+    .contact-social {
+      margin-top: 30px;
+    }
+
+    .contact-social a {
+      color: white;
+      font-size: 1.8rem;
+      margin-right: 25px;
+      transition: color 0.2s;
+    }
+
+    .contact-social a:hover {
+      color: #b89b6e;
+    }
+
+    .contact-btn {
+      background-color: #b89b6e;
+      border-color: #b89b6e;
+      color: #1e1e1e;
+    }
+
+    .contact-btn:hover {
+      background-color: transparent;
+      color: #b89b6e;
+      border-color: #b89b6e;
+    }
+
+    /* footer */
+    footer {
+      background-color: #141414;
+      color: #888;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.9rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0d6cc;
+      margin: 20px 0;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .logo-block {
+        flex-direction: column;
+        align-items: center;
+      }
+      .logo-image {
+        height: 90px;
+      }
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      .hero h1 span {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- background: original crown + text logo as watermark -->
+  <div class="bg-logo" aria-hidden="true">
+    <div class="bg-logo-inner">
+      <div class="bg-crown">
+        <svg viewBox="0 0 40 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20 L8 12 L12 16 L20 6 L28 16 L32 12 L36 20 L36 24 L4 24 Z"/>
+          <path d="M8 12 L12 8 L20 4 L28 8 L32 12"/>
+        </svg>
+      </div>
+      <div class="bg-text">
+        <div class="bg-line1">BELLA</div>
+        <div class="bg-line2">REIGN</div>
+        <div class="bg-line3">DESIGNS</div>
+      </div>
+      <div class="bg-tagline">CUSTOM DESIGNS ● RENTALS</div>
+    </div>
+  </div>
+
+  <div class="main-content">
+  <!-- navigation / header -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo-block">
+        <a href="#" class="logo-link" aria-label="Bella Reign Designs – Home">
+          <img
+            src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-0028b6df-a55a-430d-bd7d-de7f73613685.png"
+            alt="Bella Reign Designs"
+            class="logo-image"
+          >
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#featured">Featured</a>
+        <a href="#services">Services</a>
+        <a href="#work">Our Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero section – priority image as full-viewport background -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image: url('../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-a57821f8-f1f0-437e-977b-70cd5575a8f2.png');"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1>
+        BELLA REIGN
+        <span>DESIGNS</span>
+      </h1>
+      <div class="sub-hero">
+        <i class="fas fa-gem" style="color:#e8d4b8; margin-right:8px;"></i>
+        custom creations & luxury rentals
+        <i class="fas fa-gem" style="color:#e8d4b8; margin-left:8px;"></i>
+      </div>
+      <a href="#featured" class="btn">see our work</a>
+      <a href="#contact" class="btn" style="margin-left: 16px; background: transparent; border-color: rgba(255,255,255,0.8);">inquire now</a>
+    </div>
+  </section>
+
+  <!-- FEATURED – priority gallery (homepage) -->
+  <section id="featured" class="featured">
+    <div class="featured-header">
+      <h2 class="featured-title">Featured</h2>
+      <div class="featured-divider"></div>
+      <p class="featured-sub">Signature looks, editorial moments and the craft behind every piece.</p>
+    </div>
+    <div class="featured-grid">
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-588bdfcb-63dc-466e-bd26-11452af8b62a.png" alt="Bella Reign Designs – Rose garden evening gown" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-eea41b4f-0799-453d-8819-3d0dc9833506.png" alt="Bella Reign Designs – Luxury flat lay" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-5ed012ff-d0b1-4cd1-b136-59919b583c1f.png" alt="Bella Reign Designs – Embellished gown portrait" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-e141e3d6-aa47-4a8e-8a63-4e6f8aa451ec.png" alt="Bella Reign Designs – Red kaftan with headwrap" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-2ecfb75e-a72a-4c70-b3b3-bb41888befef.png" alt="Bella Reign Designs – Black embellished gown" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-bcf5b0f7-715e-442c-8c13-c5c989da7488.png" alt="Bella Reign Designs – Black peplum gown" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-067c15e0-0c19-454a-ba2e-c1c5725a5096.png" alt="Bella Reign Designs – Black beaded gown portrait" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-75657771-2289-4df4-a1ce-5ef64cfe4a0e.png" alt="Bella Reign Designs – Black gown close-up" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-7b87d90e-be51-428e-96c8-307d028f45cc.png" alt="Bella Reign Designs – Turquoise and floral look" loading="lazy">
+      </div>
+      <div class="featured-item">
+        <img src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-fb881cc2-96cb-4af6-9176-6915d7884096.png" alt="Bella Reign Designs – Event floral moment" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES section -->
+  <section id="services" class="container" style="padding: 80px 0;">
+    <h2 class="section-title">exceptional <br> design & rental</h2>
+    <div class="section-sub">
+      from one-of-a-kind pieces to curated rentals — we bring your vision to life.
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <i class="fas fa-pencil-ruler"></i>
+        <h3>custom design</h3>
+        <p>bespoke creations tailored to your style, whether fashion, interiors, or statement pieces.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>rentals</h3>
+        <p>exclusive furniture, decor & accessories for events, photoshoots, and special occasions.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-magic"></i>
+        <h3>styling & consult</h3>
+        <p>personalized guidance to mix custom pieces and rentals for a cohesive look.</p>
+      </div>
+    </div>
+
+    <div style="background: #f5f0ea; padding: 30px; text-align: center; margin-top: 40px;">
+      <p style="font-size: 1.5rem; font-weight: 300; color:#2b2b2b;">
+        <i class="fas fa-quote-left" style="color:#b89b6e; margin-right:10px;"></i>
+        from custom designs to premium rentals — we cover it all
+        <i class="fas fa-quote-right" style="color:#b89b6e; margin-left:10px;"></i>
+      </p>
+    </div>
+  </section>
+
+  <!-- OUR WORK / GALLERY -->
+  <section id="work" class="work-gallery">
+    <div class="container">
+      <h2 class="section-title">OUR WORK</h2>
+      <div class="section-sub">
+        A CURATED GLIMPSE INTO OUR BESPOKE GARMENTS, DRAMATIC SILHOUETTES AND STATEMENT PIECES.
+      </div>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-item">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-7e5cb613-16b3-4ae8-9dbe-4033aa76fb6f.png"
+          alt="BELLA REIGN DESIGNS BESPOKE AFRICAN PRINT GOWN"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-item">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-646428c6-4f7b-4585-aade-b637b1fbca1f.png"
+          alt="BELLA REIGN DESIGNS AFRICAN PRINT MIDI DRESS"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-item">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-c4b8edd7-212f-4b7c-af6c-17f363173fb5.png"
+          alt="BELLA REIGN DESIGNS GREEN AFRICAN PRINT DRESS WITH HEADWRAP"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-item">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-6843e929-b261-4ae7-a29f-85cfe1e58930.png"
+          alt="BELLA REIGN DESIGNS MULTI-COLOUR OFF-SHOULDER AFRICAN PRINT GOWN"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-item">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-95186bce-c627-4326-86df-4502bf845ccc.png"
+          alt="BELLA REIGN DESIGNS ABSTRACT AFRICAN PRINT MAXI DRESS"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-item">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-7fc18edf-3cc8-4243-9f35-b05b176ab21b.png"
+          alt="BELLA REIGN DESIGNS DRAMATIC BLACK HIGH-FASHION COAT"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- about section -->
+  <section id="about" class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>where elegance meets function</h2>
+        <p>Bella Reign Designs was born from a passion for sculptural beauty and the belief that every space and person deserves a touch of royalty. We craft custom pieces and offer a curated rental library for designers, brands, and individuals.</p>
+        <div class="about-highlight">
+          <p>"We don't just design — we create atmospheres. Whether it's a custom gown or a rental set for a launch, each piece carries the Reign signature."</p>
+          <p style="margin-top: 15px; font-weight: 400;">— Ntakane Mabusela, Founder, CEO & Creative Director</p>
+        </div>
+      </div>
+      <div class="about-image">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-814655e6-e730-468d-9371-fb24da24f573.png"
+          alt="Bella Reign Designs couture gown in a rose garden"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contact" class="contact-section">
+    <div class="container contact-flex">
+      <div class="contact-info">
+        <h3>let's create<br>something iconic</h3>
+        <p><i class="fas fa-map-pin"></i> Montana, Pretoria, 0182, South Africa</p>
+        <p><i class="fas fa-phone-alt"></i> +27 66 574 1807</p>
+        <p><i class="fas fa-envelope"></i> bellareignsdesigns@gmail.com</p>
+        <div class="contact-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <a href="#" class="btn contact-btn">book a consultation</a>
+        <p style="margin-top: 20px; color: #aaa; max-width: 300px;"><i class="fas fa-asterisk" style="color: #b89b6e; font-size: 0.7rem;"></i> rentals available for events, photoshoots & styling</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- founder spotlight -->
+  <section class="founder">
+    <div class="container founder-inner">
+      <div class="founder-image">
+        <img
+          src="../../../.cursor/projects/c-Users-mampo-OneDrive-Documents-Bella-Reign-Designs/assets/c__Users_mampo_AppData_Roaming_Cursor_User_workspaceStorage_bbc70f2124a8ead0ef1810448ab59436_images_image-65f43d31-a08d-499a-9fa6-4f2b7240891c.png"
+          alt="Ntakane Mabusela, Founder and CEO of Bella Reign Designs"
+          loading="lazy"
+        >
+      </div>
+      <div class="founder-text">
+        <h3 class="founder-name">NTAKANE MABUSELA</h3>
+        <div class="founder-role">FOUNDER • CEO • CREATIVE DIRECTOR</div>
+        <p class="founder-copy">
+          FROM INTIMATE BESPOKE GOWNS TO BOLD RUNWAY MOMENTS, NTAKANE MABUSELA LEADS BELLA REIGN DESIGNS WITH A VISION
+          FOR MODERN AFRICAN LUXURY – SCULPTED SILHOUETTES, RICH TEXTURES AND STORIES WOVEN INTO EVERY PIECE.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="container">
+      <div style="font-family: 'Playfair Display'; font-size: 2rem; font-weight: 700; color: #b89b6e; letter-spacing: 4px; margin-bottom: 10px;">
+        BELLA REIGN
+      </div>
+      <div style="font-size: 1.2rem; letter-spacing: 6px; color: #aaa;">DESIGNS</div>
+      <div style="margin: 20px 0; color: #666; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">custom designs ● rentals</div>
+      <hr style="border-color: #333; max-width: 300px; margin: 20px auto;">
+      <p>© 2025 Bella Reign Designs — all rights reserved.  |  made for the extraordinary</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+  </div><!-- .main-content -->
+</body>
+</html>
