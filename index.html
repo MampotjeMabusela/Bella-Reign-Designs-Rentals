@@ -691,60 +691,9 @@
         align-items: flex-start;
       }
     }
-
-    /* winter snow decoration */
-    .snow-container {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      overflow: hidden;
-    }
-
-    .snowflake {
-      position: absolute;
-      top: -20px;
-      color: #ffffff;
-      text-shadow:
-        0 0 8px rgba(255, 255, 255, 1),
-        0 0 16px rgba(200, 230, 255, 0.95),
-        0 0 24px rgba(160, 210, 255, 0.8);
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
-      opacity: 0.95;
-      animation: snowfall linear infinite;
-      user-select: none;
-      will-change: transform;
-    }
-
-    .snowflake.dot {
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffffff, #e8f4ff 60%, #cce8ff);
-      box-shadow:
-        0 0 8px rgba(255, 255, 255, 1),
-        0 0 14px rgba(200, 230, 255, 0.9);
-    }
-
-    @keyframes snowfall {
-      0% {
-        transform: translateY(-5vh) translateX(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(105vh) translateX(var(--drift)) rotate(360deg);
-        opacity: 0.9;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .snow-container {
-        display: none;
-      }
-    }
   </style>
 </head>
 <body>
-
-  <div class="snow-container" id="snow-container" aria-hidden="true"></div>
 
   <!-- background: original crown + text logo as watermark -->
   <div class="bg-logo" aria-hidden="true">
@@ -1050,38 +999,6 @@
         }
       });
     });
-
-    (function initSnow() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      const container = document.getElementById('snow-container');
-      const symbols = ['❄', '❅', '❆', '✻', '✼'];
-      const flakeCount = 90;
-
-      for (let i = 0; i < flakeCount; i++) {
-        const flake = document.createElement('span');
-        const useDot = i % 3 === 0;
-        const size = useDot
-          ? 6 + Math.random() * 10
-          : 14 + Math.random() * 18;
-
-        flake.className = useDot ? 'snowflake dot' : 'snowflake';
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
-        flake.style.animationDuration = (6 + Math.random() * 10) + 's';
-        flake.style.animationDelay = (Math.random() * -16) + 's';
-
-        if (useDot) {
-          flake.style.width = size + 'px';
-          flake.style.height = size + 'px';
-        } else {
-          flake.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-          flake.style.fontSize = size + 'px';
-        }
-
-        container.appendChild(flake);
-      }
-    })();
   </script>
 
   </div><!-- .main-content -->
