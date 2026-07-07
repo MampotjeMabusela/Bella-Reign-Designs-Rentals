@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Bella Reign Designs</title>
+  <link rel="icon" type="image/png" href="assets/logo-br.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfaf7;
+      color: #1e1e1e;
+      line-height: 1.5;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    .bg-logo {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-logo-inner {
+      opacity: 0.07;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 85vmin;
+      max-width: 720px;
+    }
+
+    .bg-logo .bg-crown svg {
+      width: 20vmin;
+      height: 14vmin;
+      stroke: #1e1e1e;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .bg-logo .bg-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 8vmin, 5rem);
+      letter-spacing: 2px;
+      color: #1e1e1e;
+      line-height: 1.05;
+    }
+
+    .bg-logo .bg-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.7rem, 2.2vmin, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #1e1e1e;
+      margin-top: 1vmin;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: rgba(252, 250, 247, 0.95);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: inline-block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+      transform: scale(1.04);
+      opacity: 0.92;
+    }
+
+    .logo-image {
+      height: 130px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #b89b6e;
+    }
+
+    .page-hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      background: linear-gradient(180deg, #f5f0ea 0%, #fcfaf7 100%);
+      border-bottom: 1px solid rgba(184, 155, 110, 0.2);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      margin-bottom: 16px;
+    }
+
+    .page-hero .divider {
+      width: 60px;
+      height: 2px;
+      background: #b89b6e;
+      margin: 0 auto 20px;
+    }
+
+    .page-hero p {
+      color: #6a6a6a;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    .quote-banner {
+      max-width: 800px;
+      margin: 50px auto 0;
+      padding: 32px 40px;
+      background: #fff;
+      border: 1px solid #f0ebe6;
+      border-left: 5px solid #b89b6e;
+      box-shadow: 0 12px 28px -12px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .quote-banner p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #4a4a4a;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .quote-banner .attribution {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #b89b6e;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .services-section {
+      padding: 70px 0 40px;
+    }
+
+    .service-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 80px;
+    }
+
+    .service-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .service-image {
+      flex: 1 1 320px;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 2px;
+      box-shadow: 0 20px 45px -20px rgba(0,0,0,0.25);
+      border: 1px solid #f0ebe6;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .service-row:hover .service-image img {
+      transform: scale(1.04);
+    }
+
+    .service-content {
+      flex: 1 1 300px;
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      color: #b89b6e;
+      margin-bottom: 16px;
+    }
+
+    .service-content h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .service-content p {
+      font-size: 0.95rem;
+      color: #5a5a5a;
+      font-weight: 300;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .service-list {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .service-list li {
+      font-size: 0.85rem;
+      color: #4a4a4a;
+      font-weight: 400;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0ebe6;
+    }
+
+    .service-list li i {
+      color: #b89b6e;
+      margin-right: 10px;
+      font-size: 0.75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #1e1e1e;
+      color: white;
+      padding: 12px 32px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border: 2px solid #1e1e1e;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: #1e1e1e;
+    }
+
+    .gallery-strip {
+      padding: 60px 0 80px;
+      background: linear-gradient(180deg, #fcfaf7 0%, #f8f5f0 50%, #fcfaf7 100%);
+      border-top: 1px solid rgba(184, 155, 110, 0.15);
+    }
+
+    .gallery-strip h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .gallery-strip .sub {
+      text-align: center;
+      color: #6a6a6a;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+      border: 1px solid #f0ebe6;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.2);
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 60px 24px 100px;
+    }
+
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: #6a6a6a;
+      font-weight: 300;
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      background-color: #141414;
+      color: #888;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .logo-image {
+        height: 90px;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+      .page-hero {
+        padding: 60px 16px 40px;
+      }
+      .service-row,
+      .service-row.reverse {
+        flex-direction: column;
+        margin-bottom: 60px;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-logo" aria-hidden="true">
+    <div class="bg-logo-inner">
+      <div class="bg-crown">
+        <svg viewBox="0 0 40 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20 L8 12 L12 16 L20 6 L28 16 L32 12 L36 20 L36 24 L4 24 Z"/>
+          <path d="M8 12 L12 8 L20 4 L28 8 L32 12"/>
+        </svg>
+      </div>
+      <div class="bg-text">
+        <div>BELLA</div>
+        <div>REIGN</div>
+      </div>
+      <div class="bg-tagline">CUSTOM DESIGNS ● RENTALS</div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo-link" aria-label="Bella Reign Designs – Home">
+          <img src="assets/logo-br.png" alt="Bella Reign Designs" class="logo-image">
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html" class="active">Services</a>
+          <a href="custom.html">Custom</a>
+          <a href="rentals.html">Rentals</a>
+          <a href="index.html#about">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <h1>Services</h1>
+      <div class="divider"></div>
+      <p>From one-of-a-kind pieces to curated rentals — we bring your vision to life with exceptional design, luxury garments and personalised styling.</p>
+      <div class="quote-banner">
+        <p>"We don't just design — we create atmospheres. Whether it's a custom gown or a rental set for a launch, each piece carries the Reign signature."</p>
+        <div class="attribution">— Ntakane Mabusela, Founder, CEO & Creative Director</div>
+      </div>
+    </header>
+
+    <section class="services-section">
+      <div class="container">
+        <article class="service-row">
+          <div class="service-image">
+            <img src="assets/custom-summer-white-wedding-01.png" alt="Custom design – Summer White Wedding gown" loading="eager">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h2>Custom Design</h2>
+            <p>Bespoke creations tailored to your style — whether fashion, interiors, or statement pieces. Every garment is crafted with sculptural silhouettes, rich textures and the Reign signature.</p>
+            <ul class="service-list">
+              <li><i class="fas fa-gem"></i> Bridal & evening gowns</li>
+              <li><i class="fas fa-gem"></i> Statement fashion pieces</li>
+              <li><i class="fas fa-gem"></i> One-of-a-kind bespoke creations</li>
+              <li><i class="fas fa-gem"></i> Fittings & alterations included</li>
+            </ul>
+            <a href="custom.html" class="btn">view custom work</a>
+          </div>
+        </article>
+
+        <article class="service-row reverse">
+          <div class="service-image">
+            <img src="assets/rental-royal-rose.png" alt="Rentals – Royal Rose evening gown" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h2>Rentals</h2>
+            <p>Signature gowns and statement dresses, ready to rent for graduations, galas, editorial shoots and unforgettable occasions. Look extraordinary without the commitment of ownership.</p>
+            <ul class="service-list">
+              <li><i class="fas fa-gem"></i> Evening & formal gowns</li>
+              <li><i class="fas fa-gem"></i> Graduations, galas & events</li>
+              <li><i class="fas fa-gem"></i> Editorial & photoshoot styling</li>
+              <li><i class="fas fa-gem"></i> Accessories available on select pieces</li>
+            </ul>
+            <a href="rentals.html" class="btn">browse rentals</a>
+          </div>
+        </article>
+
+        <article class="service-row">
+          <div class="service-image">
+            <img src="assets/about-rose-gown.png" alt="Styling and consult – editorial rose gown look" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-magic"></i></div>
+            <h2>Styling & Consult</h2>
+            <p>Personalised guidance to mix custom pieces and rentals for a cohesive look. We help you curate the perfect ensemble for your event, shoot or celebration.</p>
+            <ul class="service-list">
+              <li><i class="fas fa-gem"></i> Event & occasion styling</li>
+              <li><i class="fas fa-gem"></i> Wardrobe curation & pairing</li>
+              <li><i class="fas fa-gem"></i> Photoshoot & editorial direction</li>
+              <li><i class="fas fa-gem"></i> One-on-one design consultations</li>
+            </ul>
+            <a href="contact.html" class="btn">book a consultation</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery-strip">
+      <div class="container">
+        <h2>The Reign Touch</h2>
+        <p class="sub">A curated glimpse into the craft behind every piece.</p>
+        <div class="gallery-grid">
+          <img src="assets/featured-03.png" alt="Embellished gown portrait" loading="lazy">
+          <img src="assets/rental-midnight-majesty.png" alt="Midnight Majesty rental gown" loading="lazy">
+          <img src="assets/featured-11.png" alt="One-shoulder embellished gown" loading="lazy">
+          <img src="assets/rental-african-women.png" alt="African Women traditional rental" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Ready to Begin?</h2>
+      <p>Whether you need a bespoke creation, a rental for your next event, or styling guidance — we're here to help.</p>
+      <a href="contact.html" class="btn">get in touch</a>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div style="font-family: 'Playfair Display'; font-size: 2rem; font-weight: 700; color: #b89b6e; letter-spacing: 4px; margin-bottom: 10px;">
+          BELLA REIGN
+        </div>
+        <div style="font-size: 1.2rem; letter-spacing: 6px; color: #aaa;">DESIGNS</div>
+        <div style="margin: 20px 0; color: #666; font-size: 0.9rem; letter-spacing: 2px;">custom designs ● rentals</div>
+        <hr style="border-color: #333; max-width: 300px; margin: 20px auto;">
+        <p>© 2025 Bella Reign Designs — all rights reserved. | made for the extraordinary</p>
+        <p style="margin-top: 12px; font-size: 0.75rem;"><a href="terms.html" style="color: #888; text-decoration: none; letter-spacing: 1px;">Terms & Conditions</a></p>
+        <p style="margin-top: 8px; font-size: 0.7rem; color: #777;">website developed by mampotje mabusela</p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

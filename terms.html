@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | Bella Reign Designs</title>
+  <link rel="icon" type="image/png" href="assets/logo-br.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfaf7;
+      color: #1e1e1e;
+      line-height: 1.5;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    .bg-logo {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-logo-inner {
+      opacity: 0.07;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 85vmin;
+      max-width: 720px;
+    }
+
+    .bg-logo .bg-crown svg {
+      width: 20vmin;
+      height: 14vmin;
+      stroke: #1e1e1e;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .bg-logo .bg-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 8vmin, 5rem);
+      letter-spacing: 2px;
+      color: #1e1e1e;
+      line-height: 1.05;
+    }
+
+    .bg-logo .bg-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.7rem, 2.2vmin, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #1e1e1e;
+      margin-top: 1vmin;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: rgba(252, 250, 247, 0.95);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: inline-block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+      transform: scale(1.04);
+      opacity: 0.92;
+    }
+
+    .logo-image {
+      height: 130px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #b89b6e;
+    }
+
+    .page-hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      background: linear-gradient(180deg, #f5f0ea 0%, #fcfaf7 100%);
+      border-bottom: 1px solid rgba(184, 155, 110, 0.2);
+    }
+
+    .page-hero .crown-icon {
+      font-size: 1.5rem;
+      color: #b89b6e;
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      margin-bottom: 16px;
+    }
+
+    .page-hero .divider {
+      width: 60px;
+      height: 2px;
+      background: #b89b6e;
+      margin: 0 auto 20px;
+    }
+
+    .page-hero p {
+      color: #6a6a6a;
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    .terms-section {
+      padding: 70px 0 100px;
+    }
+
+    .terms-intro {
+      max-width: 720px;
+      margin: 0 auto 50px;
+      text-align: center;
+      padding: 28px 32px;
+      background: #fff;
+      border: 1px solid #f0ebe6;
+      box-shadow: 0 12px 28px -12px rgba(0,0,0,0.06);
+    }
+
+    .terms-intro p {
+      font-size: 0.95rem;
+      color: #5a5a5a;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .terms-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .terms-block {
+      background: #fff;
+      border: 1px solid #f0ebe6;
+      border-left: 5px solid #b89b6e;
+      padding: 32px 36px;
+      box-shadow: 0 10px 24px -12px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .terms-block:hover {
+      transform: translateX(4px);
+      box-shadow: 0 16px 32px -14px rgba(0,0,0,0.1);
+    }
+
+    .terms-block-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .terms-block-header i {
+      font-size: 1.4rem;
+      color: #b89b6e;
+      width: 36px;
+      text-align: center;
+    }
+
+    .terms-block-header h2 {
+      font-size: 1.15rem;
+      color: #1e1e1e;
+      letter-spacing: 0.5px;
+    }
+
+    .terms-block p {
+      font-size: 0.82rem;
+      color: #555;
+      font-weight: 300;
+      line-height: 1.9;
+      padding-left: 52px;
+    }
+
+    .terms-footer-note {
+      max-width: 860px;
+      margin: 50px auto 0;
+      text-align: center;
+      padding: 24px;
+      background: #f5f0ea;
+      border: 1px solid #e8dfd4;
+    }
+
+    .terms-footer-note p {
+      font-size: 0.8rem;
+      color: #6a6a6a;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .terms-footer-note i {
+      color: #b89b6e;
+      margin-right: 8px;
+    }
+
+    footer {
+      background-color: #141414;
+      color: #888;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .logo-image {
+        height: 90px;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+      .page-hero {
+        padding: 60px 16px 40px;
+      }
+      .terms-block {
+        padding: 24px 20px;
+      }
+      .terms-block p {
+        padding-left: 0;
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-logo" aria-hidden="true">
+    <div class="bg-logo-inner">
+      <div class="bg-crown">
+        <svg viewBox="0 0 40 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20 L8 12 L12 16 L20 6 L28 16 L32 12 L36 20 L36 24 L4 24 Z"/>
+          <path d="M8 12 L12 8 L20 4 L28 8 L32 12"/>
+        </svg>
+      </div>
+      <div class="bg-text">
+        <div>BELLA</div>
+        <div>REIGN</div>
+      </div>
+      <div class="bg-tagline">CUSTOM DESIGNS ● RENTALS</div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo-link" aria-label="Bella Reign Designs – Home">
+          <img src="assets/logo-br.png" alt="Bella Reign Designs" class="logo-image">
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="custom.html">Custom</a>
+          <a href="rentals.html">Rentals</a>
+          <a href="index.html#about">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <div class="crown-icon"><i class="fas fa-crown"></i></div>
+      <h1>Terms & Conditions</h1>
+      <div class="divider"></div>
+      <p>Please read our policies carefully before confirming any booking, custom order or rental with Bella Reign Designs.</p>
+    </header>
+
+    <section class="terms-section">
+      <div class="container">
+        <div class="terms-intro">
+          <p>By proceeding with a booking or rental, you agree to the terms outlined below. These policies help us deliver exceptional service while protecting both our clients and our creations.</p>
+        </div>
+
+        <div class="terms-grid">
+          <article class="terms-block">
+            <div class="terms-block-header">
+              <i class="fas fa-calendar-check"></i>
+              <h2>Bookings & Confirmations</h2>
+            </div>
+            <p>All bookings, custom orders and rentals are confirmed once a non-refundable retainer or booking fee has been paid and your date has been secured in our diary.</p>
+          </article>
+
+          <article class="terms-block">
+            <div class="terms-block-header">
+              <i class="fas fa-tshirt"></i>
+              <h2>Rental Garments</h2>
+            </div>
+            <p>Rental garments must be returned on the agreed date, in good condition and without unauthorised alterations. Late returns, visible damage or permanent stains may incur additional fees or full replacement costs at Bella Reign Designs' discretion.</p>
+          </article>
+
+          <article class="terms-block">
+            <div class="terms-block-header">
+              <i class="fas fa-cut"></i>
+              <h2>Custom Pieces</h2>
+            </div>
+            <p>For custom pieces, final fittings and small adjustments are included within reason; major design changes after fabric has been purchased or work has begun will be quoted separately.</p>
+          </article>
+
+          <article class="terms-block">
+            <div class="terms-block-header">
+              <i class="fas fa-ruler-combined"></i>
+              <h2>Client Responsibilities</h2>
+            </div>
+            <p>Clients are responsible for providing accurate measurements and event dates. Bella Reign Designs is not liable for changes in body size, event postponements or cancellations after work has commenced.</p>
+          </article>
+
+          <article class="terms-block">
+            <div class="terms-block-header">
+              <i class="fas fa-camera"></i>
+              <h2>Photography & Marketing</h2>
+            </div>
+            <p>By proceeding with a booking, you agree that Bella Reign Designs may photograph completed looks and use select images for portfolio, social media and marketing purposes, unless otherwise agreed in writing.</p>
+          </article>
+        </div>
+
+        <div class="terms-footer-note">
+          <p><i class="fas fa-gem"></i>For questions about these terms, please <a href="contact.html" style="color: #b89b6e; text-decoration: none;">contact us</a> before placing your order.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div style="font-family: 'Playfair Display'; font-size: 2rem; font-weight: 700; color: #b89b6e; letter-spacing: 4px; margin-bottom: 10px;">
+          BELLA REIGN
+        </div>
+        <div style="font-size: 1.2rem; letter-spacing: 6px; color: #aaa;">DESIGNS</div>
+        <div style="margin: 20px 0; color: #666; font-size: 0.9rem; letter-spacing: 2px;">custom designs ● rentals</div>
+        <hr style="border-color: #333; max-width: 300px; margin: 20px auto;">
+        <p>© 2025 Bella Reign Designs — all rights reserved. | made for the extraordinary</p>
+        <p style="margin-top: 8px; font-size: 0.7rem; color: #777;">website developed by mampotje mabusela</p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
