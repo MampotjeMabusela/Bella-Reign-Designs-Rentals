@@ -113,10 +113,17 @@
     }
 
     .logo-image {
-      height: 130px;
+      height: 110px;
       width: auto;
+      max-width: 240px;
       display: block;
       object-fit: contain;
+      background: transparent;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .logo-link:hover .logo-image {
+      opacity: 0.88;
     }
 
     .nav-links {
@@ -260,6 +267,27 @@
       font-size: 0.9rem;
     }
 
+    .footer-logo-link {
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .footer-logo {
+      height: 100px;
+      width: auto;
+      max-width: 280px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-logo-link:hover .footer-logo {
+      opacity: 1;
+    }
+
     @media (max-width: 700px) {
       .nav-container {
         flex-direction: column;
@@ -267,7 +295,8 @@
         align-items: flex-start;
       }
       .logo-image {
-        height: 90px;
+        height: 80px;
+        max-width: 180px;
       }
       .nav-links {
         flex-wrap: wrap;
@@ -376,11 +405,9 @@
 
     <footer>
       <div class="container">
-        <div style="font-family: 'Playfair Display'; font-size: 2rem; font-weight: 700; color: #b89b6e; letter-spacing: 4px; margin-bottom: 10px;">
-          BELLA REIGN
-        </div>
-        <div style="font-size: 1.2rem; letter-spacing: 6px; color: #aaa;">DESIGNS</div>
-        <div style="margin: 20px 0; color: #666; font-size: 0.9rem; letter-spacing: 2px;">custom designs ● rentals</div>
+        <a href="index.html" class="footer-logo-link" aria-label="Bella Reign Designs – Home">
+          <img src="assets/logo-br.png" alt="Bella Reign Designs – Bespoke Design | Luxe Rentals" class="footer-logo">
+        </a>
         <hr style="border-color: #333; max-width: 300px; margin: 20px auto;">
         <p>© 2025 Bella Reign Designs — all rights reserved. | made for the extraordinary</p>
         <p style="margin-top: 12px; font-size: 0.75rem;"><a href="terms.html" style="color: #888; text-decoration: none; letter-spacing: 1px;">Terms & Conditions</a></p>
