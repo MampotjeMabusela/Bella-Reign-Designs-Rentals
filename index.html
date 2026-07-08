@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bella Reign Designs | Custom Designs ● Rentals</title>
   <link rel="icon" type="image/png" href="assets/logo-br.png">
+  <link rel="preload" as="image" href="assets/featured-4k/featured-01.jpg" fetchpriority="high">
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts: elegant serif + clean sans -->
@@ -163,7 +164,7 @@
       color: #b89b6e;
     }
 
-    /* hero – full-viewport with priority image */
+    /* hero – featured slideshow */
     .hero {
       position: relative;
       min-height: 92vh;
@@ -171,27 +172,94 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 100px 24px 80px;
+      padding: 100px 24px 100px;
       overflow: hidden;
     }
 
-    .hero-bg {
+    .hero-slideshow {
       position: absolute;
       inset: 0;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.6s ease;
+      will-change: opacity;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transform: scale(1) translateZ(0);
+      transition: transform 7s ease-out;
+      image-rendering: auto;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .hero-slide.active img {
+      transform: scale(1.07);
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.5) 100%);
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%),
+        linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 50%, rgba(0,0,0,0.2) 100%);
+      pointer-events: none;
     }
 
     .hero .container {
       position: relative;
       z-index: 2;
+    }
+
+    .hero-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 24px 32px;
+    }
+
+    .hero-progress {
+      flex: 1;
+      height: 2px;
+      background: rgba(255,255,255,0.25);
+      overflow: hidden;
+    }
+
+    .hero-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #b89b6e, #e8d4b8);
+      transition: width 0.1s linear;
+    }
+
+    .hero-counter {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 300;
+      min-width: 72px;
+      text-align: right;
     }
 
     .hero h1 {
@@ -301,9 +369,18 @@
     }
 
     @media (max-width: 600px) {
-      .hero { min-height: 85vh; padding: 80px 20px 60px; }
+      .hero { min-height: 85vh; padding: 80px 16px 88px; }
+      .hero-footer { padding: 0 16px 24px; }
       .featured-grid { grid-template-columns: 1fr; padding: 0 16px 60px; }
       .featured-item { aspect-ratio: 3 / 4; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide,
+      .hero-slide img,
+      .hero-progress-bar {
+        transition: none;
+      }
     }
 
     .btn {
@@ -607,6 +684,16 @@
       width: 30px;
     }
 
+    .contact-info a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: #b89b6e;
+    }
+
     .contact-social {
       margin-top: 30px;
     }
@@ -762,9 +849,52 @@
     </div>
   </nav>
 
-  <!-- hero section – priority image as full-viewport background -->
-  <section class="hero">
-    <div class="hero-bg" style="background-image: url('assets/hero-rose-gown.png');"></div>
+  <!-- hero section – featured slideshow -->
+  <section class="hero" id="hero">
+    <div class="hero-slideshow" aria-hidden="true">
+      <div class="hero-slide active">
+        <img src="assets/featured-4k/featured-01.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-02.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-03.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-05.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-06.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-07.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-08.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-09.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-10.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-11.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-12.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-13.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-14.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/featured-4k/featured-15.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
     <div class="hero-overlay"></div>
     <div class="container">
       <h1>
@@ -778,6 +908,12 @@
       </div>
       <a href="#featured" class="btn">see our work</a>
       <a href="contact.html" class="btn" style="margin-left: 16px; background: transparent; border-color: rgba(255,255,255,0.8);">inquire now</a>
+    </div>
+    <div class="hero-footer">
+      <div class="hero-progress" aria-hidden="true">
+        <div class="hero-progress-bar" id="hero-progress-bar"></div>
+      </div>
+      <span class="hero-counter" id="hero-counter">01 / 14</span>
     </div>
   </section>
 
@@ -938,7 +1074,7 @@
         <h3>let's create<br>something iconic</h3>
         <p><i class="fas fa-map-pin"></i> Montana, Pretoria, 0182, South Africa</p>
         <p><i class="fas fa-phone-alt"></i> +27 66 574 1807</p>
-        <p><i class="fas fa-envelope"></i> bellareignsdesigns@gmail.com</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:Bellareignsdesigns@gmail.com">Bellareignsdesigns@gmail.com</a></p>
         <div class="contact-social">
           <a href="https://wa.me/27665741807" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           <a href="https://www.instagram.com/theebellareign/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -979,6 +1115,7 @@
         <img src="assets/logo-br.png" alt="Bella Reign Designs – Bespoke Design | Luxe Rentals" class="footer-logo">
       </a>
       <hr style="border-color: #333; max-width: 300px; margin: 20px auto;">
+      <p style="font-size: 0.85rem; letter-spacing: 1px;"><a href="mailto:Bellareignsdesigns@gmail.com" style="color: #b89b6e; text-decoration: none;">Bellareignsdesigns@gmail.com</a></p>
       <p>© 2025 Bella Reign Designs — all rights reserved.  |  made for the extraordinary</p>
       <p style="margin-top: 12px; font-size: 0.75rem;"><a href="terms.html" style="color: #888; text-decoration: none; letter-spacing: 1px;">Terms & Conditions</a></p>
       <p style="margin-top: 8px; font-size: 0.7rem; color: #777;">website developed by mampotje mabusela</p>
@@ -995,8 +1132,134 @@
         }
       });
     });
+
+    (function () {
+      const hero = document.getElementById('hero');
+      const slides = hero.querySelectorAll('.hero-slide');
+      const progressBar = document.getElementById('hero-progress-bar');
+      const counter = document.getElementById('hero-counter');
+      const total = slides.length;
+      const slideDuration = 4000;
+      let current = 0;
+      let slideTimer = null;
+      let progressTimer = null;
+      let progressStart = 0;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function pad(num) {
+        return String(num).padStart(2, '0');
+      }
+
+      function updateCounter() {
+        counter.textContent = pad(current + 1) + ' / ' + pad(total);
+      }
+
+      function preloadSlide(index) {
+        const img = slides[(index + total) % total].querySelector('img');
+        if (!img || img.dataset.preloaded === 'true') return;
+        const loader = new Image();
+        loader.src = img.src;
+        img.dataset.preloaded = 'true';
+      }
+
+      function resetKenBurns(slide) {
+        const img = slide.querySelector('img');
+        if (!img) return;
+        img.style.transition = 'none';
+        img.style.transform = 'scale(1)';
+        void img.offsetWidth;
+        img.style.transition = '';
+      }
+
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        resetKenBurns(slides[current]);
+        current = (index + total) % total;
+        slides[current].classList.add('active');
+        updateCounter();
+        preloadSlide(current + 1);
+        preloadSlide(current + 2);
+        restartProgress();
+      }
+
+      function next() { goTo(current + 1); }
+
+      function clearTimers() {
+        clearTimeout(slideTimer);
+        cancelAnimationFrame(progressTimer);
+      }
+
+      function restartProgress() {
+        clearTimers();
+        progressBar.style.width = '0%';
+        if (reducedMotion) return;
+
+        progressStart = performance.now();
+        function tick(now) {
+          const elapsed = now - progressStart;
+          const pct = Math.min((elapsed / slideDuration) * 100, 100);
+          progressBar.style.width = pct + '%';
+          if (pct < 100) {
+            progressTimer = requestAnimationFrame(tick);
+          }
+        }
+        progressTimer = requestAnimationFrame(tick);
+        slideTimer = setTimeout(next, slideDuration);
+      }
+
+      updateCounter();
+      preloadSlide(0);
+      preloadSlide(1);
+      restartProgress();
+
+      window.addEventListener('load', function () {
+        slides.forEach(function (_, i) {
+          setTimeout(function () { preloadSlide(i); }, i * 500);
+        });
+      });
+    })();
   </script>
 
   </div><!-- .main-content -->
+
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.55);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+      }
+    }
+  </style>
+  <a href="https://wa.me/27665741807" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </body>
 </html>
